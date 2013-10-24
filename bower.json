@@ -1,0 +1,19 @@
+{
+  "name": "get-sassy",
+  "version": "0.0.0",
+  "homepage": "https://github.com/Snugug/get-sassy",
+  "authors": [
+    "Sam Richard <snugug@gmail.com>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "prism": "gh-pages"
+  }
+}
