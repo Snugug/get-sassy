@@ -59,6 +59,90 @@
 					</ul>
 				</section>
 
+				<!-- What Is Sass -->
+				<section data-transition="zoom">
+					<section id="what-is-sass" >
+						<h1>What Is Sass?</h1>
+					</section>
+				</section>
+
+				<section>
+					<section id="sass-language-construct">
+						<p>Sass is a language construct to create CSS</p>
+						<p class="fragment">It makes writing awesome CSS easier</p>
+						<p class="fragment"><a href="http://sass-lang.org">sass-lang.com</a></p>
+					</section>
+					<section id="sass-syntax">
+						<p>Sass has TWO syntaxes:</p>
+						<p class="fragment" style="font-size: 2em; "><code>.sass</code> <em style="font-size: .5em; padding-right: .1em; " class="subdued">and</em> <code>.scss</code></p>
+					</section>
+					<section>
+						<h3><code>.sass</code> - whitespace sensitive</h3>
+						<div>
+							<pre class="half"><code class="language-scss">// .sass
+.my-selector
+  font-size: 2em
+  background: #333
+  font-family: $monospace
+</code></pre>
+						</div>
+
+						<div class="fragment">
+							<pre class="half"><code class="language-scss">// .scss
+.my-selector {
+  font-size: 2em;
+  background: #333;
+  font-family: $monospace;
+}</code></pre>
+						<h3><code>.scss</code> - superset of CSS</h3>
+						</div>
+					</section>
+					<section id="sass-using-scss">
+						<h2>Today we're using SCSS</h2>
+						<h3 class="fragment">Tech reasons</h3>
+						<ul>
+							<li class="fragment">Easier to understand if you know CSS</li>
+							<li class="fragment">Easier to integrate in the real-world</li>
+						</ul>
+						<br><br>
+						<h3 class="fragment">Team reasons</h3>
+						<ul>
+							<li class="fragment">Helps onboard CSS-savvy teammates.</li>
+							<li class="fragment">SCSS allows you to convert a project<br> piece by piece even in-progress</li>
+						</ul>
+					</section>
+				</section>
+
+				<!-- Dependency Management -->
+				<section>
+					<section id="dependency-management">
+						<h2>Dependency Management</h2>
+					</section>
+
+					<section id="dependencies-ruby">
+						<p>Sass runs off of Ruby, so you need to have Ruby installed</p>
+						<p class="fragment">Handling ruby dependencies is easy with <a href="http://bundler.io/">Bundler</a></p>
+					</section>
+
+					<section id="dependencies-bundler">
+						<p>When working on different computers, developers, or even projects, there will always be an issue with ruby gems changing between different versions.</p>
+						<p class="fragment">We want to make sure that we know which versions of each gem we are using to prevent compiling differences and errors. Bundler allows us to do just that. But first, we need to make sure we have Bundler installed:</p>
+						<pre class="fragment"><code class="language-javascript">gem install bundler</code></pre>
+					</section>
+
+					<section id="dependencies-gemfile">
+						<p>The <code>Gemfile</code> that comes with the project will tell Bundler exactly what versions of what gems to use. Use the following command to create a <code>Gemfile.lock</code> file within your theme to install gem dependencies you may not already have and to lock each gem version.</p>
+						<pre class="fragment"><code class="language-javascript">bundle install</code></pre>
+					</section>
+
+					<section id="dependencies-bundle-exec">
+						<p>From now on, instead of running "compass watch" or "compass compile", you use:</p>
+						<pre class="fragment"><code class="language-javascript">bundle exec compass watch</code></pre>
+						<br>
+						<p class="fragment">And bundler will only use the gem versions selected within the .lock file</p>
+					</section>
+				</section>
+
 
 
 
@@ -108,6 +192,9 @@
 			});
 
 		</script>
+
+		<script>document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':8088/livereload.js?snipver=1"></' + 'script>')
+    </script>
 
 		<!-- Google Analytics -->
 		<script>
