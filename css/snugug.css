@@ -11,3 +11,39 @@ img.medium{max-width:80%}
 
 ul .fragment{opacity:0;-webkit-transform:rotateX(90deg);-moz-transform:rotateX(90deg);-ms-transform:rotateX(90deg);-o-transform:rotateX(90deg);transform:rotateX(90deg)}
 ul .fragment.visible{opacity:1;-webkit-transform:rotateX(0);-moz-transform:rotateX(0);-ms-transform:rotateX(0);-o-transform:rotateX(0);transform:rotateX(0)}
+
+@media (min-width: 75.9375em) {
+  .medal-pre .state-background {
+    background-position: 1800px -1500px;
+  }
+
+  .bronze section.present,
+  .silver section.present,
+  .gold section.present {
+    position: absolute;
+    max-width: 85%;
+    left: -11em;
+    color: #333;
+  }
+
+  .bronze section.present h2,
+  .silver section.present h2,
+  .gold section.present h2 {
+    text-shadow: 1px 0 0 #7e6c74, -1px 0 0 #7e6c74, 0 1px 0 #7e6c74, 0 -1px 0 #7e6c74;
+  }
+
+  .bronze .state-background {
+    background: #eaeaea url('../img/medal-bronze.png') no-repeat 90% 1em;
+  }
+  .silver .state-background {
+    background: #eaeaea url('../img/medal-silver.png') no-repeat 90% 1em;
+  }
+  .gold .state-background {
+    background: #eaeaea url('../img/medal-gold.png') no-repeat 90% 1em;
+  }
+
+  code[class*="language-"],
+  .token.punctuation {
+    color: #333;
+  }
+}
