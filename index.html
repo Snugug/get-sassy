@@ -73,9 +73,8 @@
 						<p>to fork and clone the repo</p>
 					</section>
 					<section id="code-branches">
-						<p>Each challenge's answer is available as a branch.</p>
-						<p class="fragment">If you are would like to be caught up quickly, simply check out the relevant branch.</p>
-						<p class="fragment">No cheating!</p>
+						<p>Each challenge's starting point is available as a branch.</p>
+						<p class="fragment">If you are would like to be caught up quickly, simply check out the branch of the challenge you're on.</p>
 					</section>
 				</section>
 
@@ -94,11 +93,11 @@
 					</section>
 					<section id="sass-syntax">
 						<p>Sass has TWO syntaxes: <br><br>
-						<span class="fragment"><code>.sass</code> and <code>.scss</code></span>
+						<span class="fragment"><code class="language-javascript">.sass</code> and <code class="language-javascript">.scss</code></span>
 						</p>
 					</section>
 					<section>
-						<h3><code>.sass</code> - whitespace sensitive</h3>
+						<h3><code class="language-javascript">.sass</code> - whitespace sensitive</h3>
 						<div>
 							<pre class="half"><code class="language-scss">// .sass
 .my-selector
@@ -115,21 +114,50 @@
   background: #333;
   font-family: $monospace;
 }</code></pre>
-						<h3><code>.scss</code> - superset of CSS</h3>
+						<h3><code class="language-javascript">.scss</code> - superset of CSS</h3>
 						</div>
 					</section>
 					<section id="sass-using-scss">
 						<h2>Today we're using SCSS</h2>
-						<h3 class="fragment">Tech reasons</h3>
+						<p class="fragment"><strong class="lowercase">Tech reasons</strong></p>
 						<ul>
 							<li class="fragment">Easier to understand if you know CSS</li>
 							<li class="fragment">Easier to integrate in the real-world</li>
 						</ul>
 						<br><br>
-						<h3 class="fragment">Team reasons</h3>
+						<p class="fragment"><strong class="lowercase">Team reasons</strong></p>
 						<ul>
 							<li class="fragment">Helps onboard CSS-savvy teammates.</li>
 							<li class="fragment">SCSS allows you to convert a project<br> piece by piece even in-progress</li>
+						</ul>
+					</section>
+				</section>
+
+				<!-- Compass -->
+				<section>
+					<section id="compass">
+						<h2>Compass</h2>
+					</section>
+					<section id="compass-intro">
+						<p><a href="http://compass-style.org/">Compass</a> is a framework built around Sass, enhancing Sass in two main areas</p>
+						<ul>
+							<li class="fragment">Extension framework for sharing and using code</li>
+							<li class="fragment">Sass Framework for assisting with cross-browser compatibility and development needs</li>
+						</ul>
+					</section>
+					<section id="compass-pipeline">
+						<p>The core of a Compass project is the <code class="language-javascript">config.rb</code> file, which lives at the root of your working directory:</p>
+						<ul>
+							<li class="fragment">Provides a pseudo asset pipeline so Compass knows where your different file types should live</li>
+							<li class="fragment">Compilation options for Compass</li>
+							<li class="fragment">Extension requires for including Compass extensions</li>
+						</ul>
+					</section>
+					<section id="compass-compile">
+						<p>Compiling with Compass can be done in one of two ways</p>
+						<ul>
+							<li class="fragment"><code class="language-javascript">compass compile</code> One-off compile of your Sass files</li>
+							<li class="fragment"><code class="language-javascript">compass watch</code> Listener for changes to Sass files; will trigger a recompile with each change</li>
 						</ul>
 					</section>
 				</section>
@@ -141,10 +169,11 @@
 					</section>
 
 					<section id="dependencies-ruby">
-						<p>Sass runs off of Ruby, so you need to have Ruby installed</p>
-						<p class="fragment">Handling ruby dependencies is easy with <a href="http://bundler.io/">Bundler</a></p>
+						<p>Sass and Compass are Ruby projects, so you need to have Ruby installed</p>
+						<p class="fragment">Handling Ruby dependencies is easy with <a href="http://bundler.io/">Bundler</a></p>
 					</section>
 
+					<!-- Bundler -->
 					<section id="dependencies-bundler">
 						<p>When working on different computers, developers, or even projects, there will always be an issue with ruby gems changing between different versions.</p>
 						<p class="fragment">We want to make sure that we know which versions of each gem we are using to prevent compiling differences and errors. Bundler allows us to do just that. But first, we need to make sure we have Bundler installed:</p>
@@ -152,7 +181,7 @@
 					</section>
 
 					<section id="dependencies-gemfile">
-						<p>The <code>Gemfile</code> that comes with the project will tell Bundler exactly what versions of what gems to use. Use the following command to create a <code>Gemfile.lock</code> file within your theme to install gem dependencies you may not already have and to lock each gem version.</p>
+						<p>The <code class="language-javascript">Gemfile</code> that comes with the project will tell Bundler exactly what versions of what gems to use. Use the following command to create a <code class="language-javascript">Gemfile.lock</code> file within your theme to install gem dependencies you may not already have and to lock each gem version.</p>
 						<pre class="fragment"><code class="language-javascript">bundle install</code></pre>
 					</section>
 
@@ -164,6 +193,38 @@
 					</section>
 				</section>
 
+				<!-- Intro Challenge -->
+				<section>
+					<section id="challenge-01-installing-dependencies" data-state="bronze" data-transition="fade">
+						<h2>Challenge 01: Dependencies</h2>
+						<ul>
+							<li>Install your dependencies through Bundler</li>
+							<li>Don't install them globally! Instead, install them to a path in your folder called <code class="language-javascript">vendor</code></li>
+						</ul>
+					</section>
+					<section id="challenge-02-creating-sass-file" data-state="silver" data-transition="fade">
+						<h2>Challenge 02: Creating Some Sass</h2>
+						<ul>
+							<li>Create a folder for your Sass files, and put a file called <code class="language-javascript">style.scss</code> in it</li>
+							<li>Make the <code class="language-javascript">&lt;h2&gt;</code> in <code class="language-javascript">index.html</code> red in your <code class="language-javascript">style.scss</code> file</li>
+						</ul>
+					</section>
+					<section id="challenge-03-changing-compass-config" data-state="gold" data-transition="fade">
+						<h2>Challenge 03: Compass Settings</h2>
+						<ul>
+							<li>Change the <code class="language-javascript">stylesheets</code> directory to <code class="language-javascript">css</code>, the <code class="language-javascript">javascripts</code> directory to <code class="language-javascript">js</code>, and the <code class="language-javascript">images</code> directory to <code class="language-javascript">img</code></li>
+							<li>Turn on relative assets</li>
+						</ul>
+					</section>
+				</section>
+
+				<!-- Basics -->
+				<section>
+					<section id="sass-basics">
+						<h2>Sass Basics</h2>
+					</section>
+
+				</section>
 
 
 
