@@ -42,8 +42,39 @@ ul .fragment.visible{opacity:1;-webkit-transform:rotateX(0);-moz-transform:rotat
     background: #eaeaea url('../img/medal-gold.png') no-repeat 90% 1em;
   }
 
-  code[class*="language-"],
-  .token.punctuation {
+  .bronze code[class*="language-"],
+  .silver code[class*="language-"],
+  .gold code[class*="language-"],
+  .bronze .token.punctuation,
+  .silver .token.punctuation,
+  .gold .token.punctuation {
+    color: #333;
+  }
+
+  .bronze .controls div.navigate-left,
+  .silver .controls div.navigate-left,
+  .gold .controls div.navigate-left {
+    border-right-color: #333;
+  }
+  .bronze .controls div.navigate-right,
+  .silver .controls div.navigate-right,
+  .gold .controls div.navigate-right {
+    border-left-color: #333;
+  }
+  .bronze .controls div.navigate-up,
+  .silver .controls div.navigate-up,
+  .gold .controls div.navigate-up {
+    border-bottom-color: #333;
+  }
+  .bronze .controls div.navigate-down,
+  .silver .controls div.navigate-down,
+  .gold .controls div.navigate-down {
+    border-top-color: #333;
+  }
+
+  .bronze #pagecounter,
+  .silver #pagecounter,
+  .gold #pagecounter {
     color: #333;
   }
 }
