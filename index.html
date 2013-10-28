@@ -226,10 +226,11 @@
 				</section>
 				<section data-transition="concave">
 					<section id="basics-css-extensions">
-						<p>Sass extends CSS in 6 basic ways</p>
+						<p>Sass extends pre-compiled CSS in 7 basic ways</p>
 						<ul>
 							<li class="fragment">Variables</li>
-							<li class="fragment">Placeholder Selectors</li>
+							<li class="fragment">Selector Nesting</li>
+							<li class="fragment">Selector Extension and Placeholder Selectors</li>
 							<li class="fragment">Functions</li>
 							<li class="fragment">Mixins</li>
 							<li class="fragment">Control Directives</li>
@@ -267,7 +268,7 @@ $primary-color: $red;
   background: #bd212b;
 }</code></pre>
 					</section>
-					<section id="variable-usage-interpolation">
+					<section id="variables-usage-interpolation">
 						<p>Variables can also be interpolated into strings, selectors, or properties</p>
 						<pre class="fragment"><code class="language-scss">$greeting-class: 'welcome';
 $greeting: 'Aloha';
@@ -308,6 +309,214 @@ h1 {
   font-family: $font-serif;
 }
 </code></pre>
+					</section>
+				</section>
+
+				<!-- Selector Nesting -->
+				<section>
+					<section id="selector-nesting">
+						<h2>Selector Nesting</h2>
+					</section>
+					<section id="nesting-basics">
+						<p>Sass allows you to nest selectors inside each other to create compound selector chains</p>
+						<p class="fragment">A common mistake is to use nesting to make your selector chain look like your DOM structure; <strong>don't do that!</strong></p>
+						<p class="fragment">We like to use the Inception rule: never go more than 3 levels deep!</p>
+					</section>
+					<section id="nesting-basic-demo-sass">
+						<pre><code class="language-scss">.navigation {
+  background: black;
+
+  li {
+    display: inline-block;
+  }
+
+  a {
+    color: white;
+  }
+}</code></pre>
+					</section>
+					<section id="nesting-basic-demo-css">
+						<pre><code class="language-scss">.navigation {
+  background: black;
+}
+.navigation li {
+  display: inline-block;
+}
+.navigation a {
+  color: white;
+}</code></pre>
+					</section>
+					<section id="nesting-caution-demo-sass">
+						<pre><code class="language-scss">.navigation {
+  background: black;
+
+  ul {
+    li {
+      display: inline-block;
+
+      a {
+        color: white;
+      }
+    }
+  }
+}</code></pre>
+					</section>
+					<section id="nesting-caution-demo-css">
+						<pre><code class="language-scss">.navigation {
+  background: black;
+}
+.navigation ul li {
+  display: inline-block;
+}
+.navigation ul li a {
+  color: white;
+}</code></pre>
+					</section>
+					<section id="nesting-wonderful-magical-ampersand">
+						<p>When nesting, we can control where our nested selector gets placed thanks to the wonderful, magical ampersand <code class="language-scss">&</code></p>
+						<p class="fragment">Placing the <code class="language-scss">&</code> adjacent to your selector will attach it directly to its parent, and putting it after will place it before its parent</p>
+					</section>
+					<section id="nesting-ampersand-demo-sass">
+						<pre><code class="language-scss">a {
+  color: blue;
+  text-decoration: underline;
+  &:hover {
+    color: mix(white, blue, 25%);
+    text-decoration: none;
+  }
+}
+
+.logo {
+  .svg & {
+    background-image: url('../img/logo.svg');
+  }
+  .no-svg & {
+    background-image: url('../img/logo.png');
+  }
+}</code></pre>
+					</section>
+					<section id="nesting-ampersand-demo-css">
+						<pre><code class="language-scss">a {
+  color: blue;
+  text-decoration: underline;
+}
+a:hover {
+  color: #3f3fff;
+  text-decoration: none;
+}
+
+.svg .logo {
+  background-image: url("../img/logo.svg");
+}
+.no-svg .logo {
+  background-image: url("../img/logo.png");
+}</code></pre>
+					</section>
+				</section>
+
+				<section>
+					<section id="selector-extension">
+						<h2>Selector Extension and Placeholder Selectors</h2>
+					</section>
+					<section id="extends-basics">
+						<p>Sass introduces the concept of selector extension as a way of specifying that a selector inherits the properties of another selector.</p>
+						<p class="fragment">This inheritance takes place in CSS by comma-separating the selectors in the output CSS</p>
+						<p class="fragment"><strong>Warning:</strong> If not used with forethought, extension can bloat your output CSS</p>
+					</section>
+					<section id="extends-basic-demo-sass">
+						<pre><code class="language-scss">.message {
+  border-radius: 5px;
+  padding: 5px;
+}
+
+.message--status {
+  @extend .message;
+  background-color: green;
+}
+.message--error {
+  @extend .message;
+  background-color: red;
+}</code></pre>
+					</section>
+					<section id="extends-basic-demo-css">
+						<pre><code class="language-scss">.message, .message--status, .message--error {
+  border-radius: 5px;
+  padding: 5px;
+}
+
+.message--status {
+  background-color: green;
+}
+.message--error {
+  background-color: red;
+}</code></pre>
+					</section>
+					<section id="extends-caution-demo-sass">
+						<pre><code class="language-scss">a {
+  color: blue;
+  text-decoration: underline;
+
+  nav & {
+    color: white;
+    text-decoration: none;
+  }
+
+  #very-specific & {
+    color: green;
+  }
+}
+
+.bad-extensions {
+  @extend a;
+}</code></pre>
+					</section>
+					<section id="extends-caution-demo-css">
+						<pre><code class="language-scss">a, .bad-extensions {
+  color: blue;
+  text-decoration: underline;
+}
+
+nav a, nav .bad-extensions {
+  color: white;
+  text-decoration: none;
+}
+
+#very-specific a, #very-specific .bad-extensions {
+  color: green;
+}</code></pre>
+					</section>
+					<section id="extends-placeholder-selectors">
+						<p>Placeholder Selectors give us fine-grain control over using <code class="language-scss">@extend</code> by providing a silent class to extend from</p>
+						<p class="fragment">Placeholder selectors inherit the the name of the first selector to extend them, reducing our total output and ensuring we're extending only what we want to</p>
+						<p class="fragment">Placeholder selectors begin with a <code class="language-scss">%</code></p>
+					</section>
+					<section id="extends-placeholder-demo-sass">
+						<pre><code class="language-scss">%message {
+  border-radius: 5px;
+  padding: 5px;
+}
+
+.message--status {
+  @extend %message;
+  background-color: green;
+}
+.message--error {
+  @extend %message;
+  background-color: red;
+}</code></pre>
+					</section>
+					<section id="extends-placeholder-demo-css">
+						<pre><code class="language-scss">.message--status, .message--error {
+  border-radius: 5px;
+  padding: 5px;
+}
+
+.message--status {
+  background-color: green;
+}
+.message--error {
+  background-color: red;
+}</code></pre>
 					</section>
 				</section>
 
