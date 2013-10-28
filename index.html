@@ -195,21 +195,21 @@
 
 				<!-- Intro Challenge -->
 				<section>
-					<section id="challenge-01-installing-dependencies" data-state="bronze" data-transition="fade">
+					<section id="challenge-01-installing-dependencies" data-state="bronze" data-transition="fade" data-transition-speed="slow">
 						<h2>Challenge 01: Dependencies</h2>
 						<ul>
 							<li>Install your dependencies through Bundler</li>
 							<li>Don't install them globally! Instead, install them to a path in your folder called <code class="language-javascript">vendor</code></li>
 						</ul>
 					</section>
-					<section id="challenge-02-creating-sass-file" data-state="silver" data-transition="fade">
+					<section id="challenge-02-creating-sass-file" data-state="silver" data-transition="fade" data-transition-speed="slow">
 						<h2>Challenge 02: Creating Some Sass</h2>
 						<ul>
 							<li>Create a folder for your Sass files, and put a file called <code class="language-javascript">style.scss</code> in it</li>
 							<li>Make the <code class="language-javascript">&lt;h2&gt;</code> in <code class="language-javascript">index.html</code> red in your <code class="language-javascript">style.scss</code> file</li>
 						</ul>
 					</section>
-					<section id="challenge-03-changing-compass-config" data-state="gold" data-transition="fade">
+					<section id="challenge-03-changing-compass-config" data-state="gold" data-transition="fade" data-transition-speed="slow">
 						<h2>Challenge 03: Compass Settings</h2>
 						<ul>
 							<li>Change the <code class="language-javascript">stylesheets</code> directory to <code class="language-javascript">css</code>, the <code class="language-javascript">javascripts</code> directory to <code class="language-javascript">js</code>, and the <code class="language-javascript">images</code> directory to <code class="language-javascript">img</code></li>
@@ -219,12 +219,98 @@
 				</section>
 
 				<!-- Basics -->
-				<section>
+				<section data-transition="zoom">
 					<section id="sass-basics">
-						<h2>Sass Basics</h2>
+						<h1>Sass Basics</h1>
 					</section>
-
 				</section>
+				<section data-transition="concave">
+					<section id="basics-css-extensions">
+						<p>Sass extends CSS in 6 basic ways</p>
+						<ul>
+							<li class="fragment">Variables</li>
+							<li class="fragment">Placeholder Selectors</li>
+							<li class="fragment">Functions</li>
+							<li class="fragment">Mixins</li>
+							<li class="fragment">Control Directives</li>
+							<li class="fragment">Loops</li>
+						</ul>
+					</section>
+				</section>
+
+				<!-- Variables -->
+				<section>
+					<section id="variables">
+						<h2>Variables</h2>
+					</section>
+					<section id="variables-basics">
+						<p>Variables in Sass begin with a <code class="language-scss">$</code> and can store any single value (i.e. no properties, just values)</p>
+						<pre class="fragment"><code class="language-scss">$color: #c0ffee; // rgb(a) and hsl work as well
+$string: 'Hello World';
+$number: 100px; // With or w/o unit
+$list: 'alpha' 'beta', 'gamma' 'delta';
+$booleans: true;
+$nulls: null;
+$maps: (where: waldo, garfield: lasagna);</code></pre>
+					</section>
+					<section id="variables-usage-value">
+						<p>Variables can be used as values in properties or other variables and as inputs in functions and mixins</p>
+						<pre class="fragment"><code class="language-scss">$red: #fc2c3a;
+$primary-color: $red;
+
+.foo {
+    color: $primary-color;
+    background: mix(black, $primary-color, 25%);
+}</code></pre>
+						<pre class="fragment"><code class="language-scss">.foo {
+  color: #fc2c3a;
+  background: #bd212b;
+}</code></pre>
+					</section>
+					<section id="variable-usage-interpolation">
+						<p>Variables can also be interpolated into strings, selectors, or properties</p>
+						<pre class="fragment"><code class="language-scss">$greeting-class: 'welcome';
+$greeting: 'Aloha';
+
+.#{$greeting-class}:before {
+	content: '#{$greeting} from Universal Studios';
+}</code></pre>
+						<pre class="fragment"><code class="language-scss">.welcome:before {
+  content: "Aloha from Universal Studios";
+}</code></pre>
+					</section>
+					<section id="variables-common-start">
+						<p>One of the most common ways to get started with Sass is to take an existing CSS project, move it into your Sass directory, change it to a <code class="language-scss">.scss</code> file, then convert colors and font stacks to variables</p>
+						<pre class="fragment"><code class="language-scss">body {
+  background: #333;
+  color: #eee;
+  font-family: 'Papyrus' 'Comic Sans' 'Helvetica' sans;
+}
+
+h1 {
+  font-family: 'Times New Roman' serif;
+}</code></pre>
+					</section>
+					<section id="variables-common-start-output">
+						<pre><code class="language-scss">$background-color: #333;
+$font-color: #eee;
+
+$font-sans: 'Papyrus' 'Comic Sans' 'Helvetica' sans;
+$font-serif: 'Times New Roman' serif;
+
+body {
+  background: $background-color;
+  color: $font-color;
+  font-family: $font-sans;
+}
+
+h1 {
+  font-family: $font-serif;
+}
+</code></pre>
+					</section>
+				</section>
+
 
 
 
