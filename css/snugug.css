@@ -33,13 +33,13 @@ ul .fragment.visible{opacity:1;-webkit-transform:rotateX(0);-moz-transform:rotat
   }
 
   .bronze .state-background {
-    background: #eaeaea url('../img/medal-bronze.png') no-repeat 90% 1em;
+    background: #eaeaea url('../img/medal-bronze.png') no-repeat 90% 50%;
   }
   .silver .state-background {
-    background: #eaeaea url('../img/medal-silver.png') no-repeat 90% 1em;
+    background: #eaeaea url('../img/medal-silver.png') no-repeat 90% 50%;
   }
   .gold .state-background {
-    background: #eaeaea url('../img/medal-gold.png') no-repeat 90% 1em;
+    background: #eaeaea url('../img/medal-gold.png') no-repeat 90% 50%;
   }
 
   .bronze code[class*="language-"],
