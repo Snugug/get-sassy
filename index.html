@@ -74,7 +74,7 @@
 					</section>
 					<section id="code-branches">
 						<p>Each challenge's starting point is available as a branch.</p>
-						<p class="fragment">If you are would like to be caught up quickly, simply check out the branch of the challenge you're on.</p>
+						<p class="fragment">If you would like to be caught up quickly, simply check out the branch of the challenge you're on.</p>
 					</section>
 				</section>
 
@@ -786,16 +786,17 @@ nav a, nav .bad-extensions {
 					<section id="challenge-08-color-contrasting" data-state="silver" data-transition="fade" data-transition-speed="slow">
 						<h2>Challenge 08: Color Contrasting</h2>
 						<ul>
-							<li>Update your <code class="language-scss">@mixin</code> so that if the color passed in is dark, the <code class="language-scss">text color is #eee</code>, and if it is light, the <code class="language-scss">text color is #333</code></li>
-							<li><strong class="lowercase">Hint!</strong>Take a look at YIQ to determine if a color is light or dark! You may use any Compass extensions you may find, if you can figure out how to.</li>
+							<li>Update your <code class="language-scss">@mixin</code> so that if the color passed in is dark, the <code class="language-scss">text color is #eee</code>, and if it is light, the <code class="language-scss">text color is #333</code>, based on the YIQ color space</li>
+							<li><strong class="lowercase">Hint!</strong> There may be a Compass extension you can use.</li>
 						</ul>
 					</section>
-					<section id="challenge-09-organization" data-state="gold" data-transition="fade" data-transition-speed="slow">
-						<h2>Challenge 094: Organization</h2>
+					<section id="challenge-09-color-schemes" data-state="gold" data-transition="fade" data-transition-speed="slow">
+						<h2>Challenge 09: Color Schemes</h2>
 						<ul>
-							<li>Create <code class="language-javascript">colors</code>, <code class="language-javascript">typography</code>, and <code class="language-javascript">extendables</code> partials inside of <code class="language-javascript">sass/partials</code></li>
-							<li>Move your font variables and color variables into their respective partials</li>
-							<li>Move your placeholder selectors into your extendables partial</li>
+              <li>Put a link in your paragraph tag, make it your tertiary color</li>
+							<li>Using your chosen colors, create <code class="language-scss">secondary-color</code> and <code class="language-scss">tertiary-color</code> functions to automatically calculate your secondary and tertiary colors based on your defined primary color. This will then allow you to pass in any primary color and maintain your color relationships</li>
+              <li>Create a secondary stylesheet that has an alternative color scheme defined only by changing your primary color. Use the buttons to change between your primary color scheme and secondary color scheme. Rename them accordingly.</li>
+              <li><strong class="lowercase">Hint!</strong> Take a look at the HSL color space</li>
 						</ul>
 					</section>
 				</section>
