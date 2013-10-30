@@ -201,6 +201,7 @@
 							<li>Install your dependencies through Bundler</li>
 							<li>Don't install them globally! Instead, install them to a path in your folder called <code class="language-javascript">vendor</code></li>
 						</ul>
+            <aside class="notes">5 Minutes</aside>
 					</section>
 					<section id="challenge-02-creating-sass-file" data-state="silver" data-transition="fade" data-transition-speed="slow">
 						<h2>Challenge 02: Creating Some Sass</h2>
@@ -208,6 +209,7 @@
 							<li>Create a folder for your Sass files, and put a file called <code class="language-javascript">style.scss</code> in it</li>
 							<li>Make the <code class="language-markup">&lt;h1&gt;</code> in <code class="language-javascript">index.html</code> red in your <code class="language-javascript">style.scss</code> file</li>
 						</ul>
+            <aside class="notes">5 Minutes</aside>
 					</section>
 					<section id="challenge-03-changing-compass-config" data-state="gold" data-transition="fade" data-transition-speed="slow">
 						<h2>Challenge 03: Compass Settings</h2>
@@ -215,6 +217,7 @@
 							<li>Change the <code class="language-javascript">stylesheets</code> directory to <code class="language-javascript">css</code>, the <code class="language-javascript">javascripts</code> directory to <code class="language-javascript">js</code>, and the <code class="language-javascript">images</code> directory to <code class="language-javascript">img</code></li>
 							<li>Turn on relative assets</li>
 						</ul>
+            <aside class="notes">5 Minutes</aside>
 					</section>
 				</section>
 
@@ -242,13 +245,13 @@
 					</section>
 					<section id="variables-basics">
 						<p>Variables in Sass begin with a <code class="language-scss">$</code> and can store any single value (i.e. no properties, just values)</p>
-						<pre class="fragment"><code class="language-scss">$color: #c0ffee; // rgb(a) and hsl work as well
+						<pre class="fragment"><code class="language-scss">$color: #c0ffee; // rgb(a) and hsl(a) work as well
 $string: 'Hello World';
-$number: 100px; // With or w/o unit
+$number: 100px; // With or without unit
 $list: 'alpha' 'beta', 'gamma' 'delta';
 $booleans: true;
 $nulls: null;
-$maps: (where: waldo, garfield: lasagna);</code></pre>
+$maps: (where: waldo, garfield: lasagna); // Sass 3.3+</code></pre>
 					</section>
 					<section id="variables-usage-value">
 						<p>Variables can be used as values in properties or other variables and as inputs in functions and mixins</p>
@@ -408,6 +411,45 @@ a:hover {
   background-image: url("../img/logo.png");
 }</code></pre>
 					</section>
+          <section id="nesting-at-root-scripted-selector">
+            <p>With the introduction of Sass 3.3, we now have more control over how to construct and place selectors with <code class="language-scss">@at-root</code> and <code class="language-scss">#{&}</code></p>
+            <ul>
+              <li class="fragment"><code class="language-scss">@at-root</code> Places encapsulated code at the root of the document</li>
+              <li class="fragment"><code class="language-scss">#{&}</code> Interpolates the current parent selector</li>
+            </ul>
+          </section>
+          <section id="nesting-at-root-scripted-selector-demo-sass">
+            <pre><code class="language-scss">.message {
+  color: white;
+
+  #{&}--link {
+    color: blue;
+  }
+
+  @at-root #{&}--status {
+    background: green;
+  }
+
+  @at-root #{&}--error {
+      background: red;
+  }
+}</code></pre>
+          </section>
+          <section id="nesting-at-root-scripted-selector-demo-css">
+            <pre><code class="language-scss">.message {
+  color: white;
+}
+.message .message--link {
+  color: blue;
+}
+.message--status {
+  background: green;
+}
+.message--error {
+  background: red;
+}
+</code></pre>
+          </section>
 				</section>
 
 				<section>
