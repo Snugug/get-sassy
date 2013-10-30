@@ -566,6 +566,7 @@ nav a, nav .bad-extensions {
 							<li>Create a <code class="language-scss">serif</code> and <code class="language-scss">sans-serif</code> font stack</li>
 							<li>Choose <code class="language-scss">primary</code>, <code class="language-scss">secondary</code>, and <code class="language-scss">tertiary</code> colors, and make your <code class="language-markup">&lt;h1&gt;</code> your primary color</li>
 						</ul>
+            <aside class="notes">5 Minutes</aside>
 					</section>
 					<section id="challenge-05-creating-sass-file" data-state="silver" data-transition="fade" data-transition-speed="slow">
 						<h2>Challenge 05: Headers & Paragraphs</h2>
@@ -574,6 +575,7 @@ nav a, nav .bad-extensions {
 							<li><code class="language-markup">&lt;h1&gt;, &lt;h2&gt;, &lt;h3&gt;</code> should have a <code class="language-scss">serif</code> font and <code class="language-markup">&lt;h4&gt;, &lt;h5&gt;, &lt;h6&gt;, &lt;p&gt;</code> should have a <code class="language-scss">sans-serif</code> font</li>
 							<li><code class="language-markup">&lt;h2&gt;, &lt;h3&gt;, &lt;h4&gt;</code> should be your secondary color</li>
 						</ul>
+            <aside class="notes">10 Minutes</aside>
 					</section>
 					<section id="challenge-06-organization" data-state="gold" data-transition="fade" data-transition-speed="slow">
 						<h2>Challenge 06: Organization</h2>
@@ -582,6 +584,7 @@ nav a, nav .bad-extensions {
 							<li>Move your font variables and color variables into their respective partials</li>
 							<li>Move your placeholder selectors into your extendables partial</li>
 						</ul>
+            <aside class="notes">10 Minutes</aside>
 					</section>
 				</section>
 
@@ -824,6 +827,7 @@ nav a, nav .bad-extensions {
 							<li>Create and use a <code class="language-scss">@mixin</code> to style them. They should have a <code class="language-scss">flat background color</code>, <code class="language-scss">3px rounded corners</code>, and a <code class="language-scss">2px outset border</code> that changes to an <code class="language-scss">inset border</code> when active that's a <code class="language-scss">25% shade</code> of the passed in color. The button should have a <code class="language-scss">pointer cursor</code> on hover. Their primary colors should be your primary and secondary color, respectively.</li>
 							<li><strong class="lowercase">Remember!</strong> <code class="language-scss">@mixin</code> properties that are shared should not be duplicated!</li>
 						</ul>
+            <aside class="notes">10 Minutes</aside>
 					</section>
 					<section id="challenge-08-color-contrasting" data-state="silver" data-transition="fade" data-transition-speed="slow">
 						<h2>Challenge 08: Color Contrasting</h2>
@@ -831,6 +835,7 @@ nav a, nav .bad-extensions {
 							<li>Update your <code class="language-scss">@mixin</code> so that if the color passed in is dark, the <code class="language-scss">text color is #eee</code>, and if it is light, the <code class="language-scss">text color is #333</code>, based on the YIQ color space</li>
 							<li><strong class="lowercase">Hint!</strong> There may be a Compass extension you can use.</li>
 						</ul>
+            <aside class="notes">10 Minutes</aside>
 					</section>
 					<section id="challenge-09-color-schemes" data-state="gold" data-transition="fade" data-transition-speed="slow">
 						<h2>Challenge 09: Color Schemes</h2>
@@ -840,6 +845,7 @@ nav a, nav .bad-extensions {
               <li>Create a secondary stylesheet that has an alternative color scheme defined only by changing your primary color. Use the buttons to change between your primary color scheme and secondary color scheme. Rename them accordingly.</li>
               <li><strong class="lowercase">Hint!</strong> Take a look at the HSL color space</li>
 						</ul>
+            <aside class="notes">30 Minutes</aside>
 					</section>
 				</section>
 
@@ -851,13 +857,187 @@ nav a, nav .bad-extensions {
 				</section>
 				<section data-transition="concave">
 					<section id="control-intro">
-						<p>Sass introduces a variety of constructs to assist in writing CSS</p>
+						<p>Sass introduces a handful of control directives to make writing complex CSS easy</p>
 						<ul>
-							<li class="fragment">Functions</li>
-							<li class="fragment">Mixins</li>
+							<li class="fragment">If/Else If/Else</li>
+							<li class="fragment">For Loops</li>
+              <li class="fragment">Each Loops</li>
 						</ul>
 					</section>
 				</section>
+
+        <!-- If/Else Is/Else -->
+        <section>
+          <section id="if-else-else-if">
+            <h2>If/Else If/Else </h2>
+          </section>
+          <section id="if-basics">
+            <p>If statements in Sass are very similar to if statements in any other language; <code class="language-scss">@if</code> a value evaluates to true, that code will fire.</p>
+            <p class="fragment">Sass supports both <code class="language">and</code> and <code class="language-scss">or</code> as well.</p>
+          </section>
+          <section id="if-basics-demo-sass">
+            <pre><code class="language-scss">@mixin greeting($phrase) {
+  @if $phrase == '¡Hola' {
+    content: '#{$phrase} from Universal Studios';
+  }
+  @else if $phrase == 'Bonjour' {
+    content: '#{$phrase} from Islands of Adventure';
+  }
+  @else {
+    content: 'Wish You Were Here!';
+  }
+}
+
+.hello--spanish {
+  @include greeting('¡Hola');
+}
+.hello--french {
+  @include greeting('Bonjour');
+}
+.hello--english {
+  @include greeting('Hello');
+}</code></pre>
+          </section>
+          <section id="if-basics-demo-css">
+            <pre><code class="language-scss">.hello--spanish {
+  content: "¡Hola from Universal Studios";
+}
+
+.hello--french {
+  content: "Bonjour from Islands of Adventure";
+}
+
+.hello--english {
+  content: 'Wish You Were Here!';
+}</code></pre>
+          </section>
+        </section>
+
+        <!-- For Loops -->
+        <section>
+          <section id="for-loops">
+            <h2>For Loops</h2>
+          </section>
+          <section id="for-baiscs">
+            <p>The <code class="language-scss">@for</code> loop in Sass allows you to iterate over a series of things a given number of times</p>
+            <p class="fragment">The basic syntax is <code class="language-scss">@for 'counter' from 'start' to/through 'end'</code> where 'counter' is a variable that will hold the current iteration count, 'start' is the number to start the counter at, and 'end' is the number to end the counter either at or before, depending on if you are going to or through the number.</p>
+          </section>
+          <section id="for-basics-demo-sass">
+            <pre><code class="language-scss">@for $i from 1 through 6 {
+  h#{$i} {
+    font-size: 2em - ($i - 1) * .15em ;
+  }
+}</code></pre>
+          </section>
+          <section id="for-basics-demo-css">
+            <pre><code class="language-scss">h1 {
+  font-size: 2em;
+}
+
+h2 {
+  font-size: 1.85em;
+}
+
+h3 {
+  font-size: 1.7em;
+}
+
+h4 {
+  font-size: 1.55em;
+}
+
+h5 {
+  font-size: 1.4em;
+}
+
+h6 {
+  font-size: 1.25em;
+}</code></pre>
+          </section>
+        </section>
+
+        <!-- Each Loop -->
+        <section>
+          <section id="each-loops">
+            <h2>Each Loops</h2>
+          </section>
+          <section id="each-basics">
+            <p>The <code class="language-scss">@each</code> loop in Sass allows you to iterate over either a list or a map of items and act on each individually.</p>
+            <p class="fragment">The basic syntax is <code class="language-scss">@each 'item' in 'listing'</code> where 'item' is a variable to hold the current piece of the list and 'listing' is either a list or a map data type</p>
+          </section>
+          <section id="each-basics-demo-sass">
+            <pre><code class="language-scss">$zoo: puma black, sea-slug green, egret brown, salamander red;
+
+@each $animal in $zoo {
+  .#{nth($animal, 1)}-icon {
+    background-color: nth($animal, 2);
+  }
+}</code></pre>
+          </section>
+          <section id="each-basics-demo-css">
+            <pre><code class="language-scss">.puma-icon {
+  background-color: black;
+}
+
+.sea-slug-icon {
+  background-color: green;
+}
+
+.egret-icon {
+  background-color: brown;
+}
+
+.salamander-icon {
+  background-color: red;
+}
+</code></pre>
+          </section>
+          <section id="each-maps-upgrade">
+            <p>In Sass 3.3 and when using a map data type with your <code class="language-scss">@each</code> loop, you can write your loop to automatically give you the keys and values</p>
+            <p class="fragment">The syntax for key/value pairs is <code class="language-scss">@each 'key', 'value' in 'listing'</code> where 'key' is a variable to hold the listing's key, 'value' is a variable to hold the key's value, and 'listing' is a map data type</p>
+          </section>
+          <section id="each-maps-demo-sass">
+            <pre><code class="language-scss">$zoo: ("puma": black, "sea-slug": green, "egret": brown, "salamander": red);
+
+@each $animal, $color in $zoo {
+  .#{$animal}-icon {
+    background-color: $color;
+  }
+}</code></pre>
+          </section>
+        </section>
+
+        <!-- Controls Challenge -->
+        <section>
+          <section id="challenge-10-color-schemes" data-state="bronze" data-transition="fade" data-transition-speed="slow">
+            <h2>Challenge 10: Color Schemes</h2>
+            <ul>
+              <li>Rewrite your secondary and tertiary color functions to be a single function that chooses which color based on its input.</li>
+              <li>Warn the user if they haven't chosen the secondary or tertiary ordinal</li>
+            </ul>
+            <aside class="notes">10 Minutes</aside>
+          </section>
+          <section id="challenge-11-media-queries" data-state="silver" data-transition="fade" data-transition-speed="slow">
+            <h2>Challenge 11: Media Queries</h2>
+            <ul>
+              <li>Create a variable where you can store <code class="language-scss">min-width</code> media query values based on a human-readable name</li>
+              <li>Create a mixin that can take a human-readable name for a media query and a block of properties you'd like to use and write those properties in a media query</li>
+              <li>Choose 3 breakpoints, and change the color of the <code class="language-markup">h1</code> from your primary color to your secondary color to your tertiary color</li>
+              <li>Make sure you're only writing a media query if a valid input is given to your mixin. Warn them if their input isn't valid.</li>
+            </ul>
+            <aside class="notes">15 Minutes</aside>
+          </section>
+          <section id="challenge-12-icons" data-state="gold" data-transition="fade" data-transition-speed="slow">
+            <h2>Challenge 12: Icons</h2>
+            <ul>
+              <li>Add a list of links to your site, including GitHub, Reddit, Apple, Android, and Windows</li>
+              <li>Create a free icon from from <strong>icomoon.io/app</strong> of those URLS. The icons should apply based on a word, not a unicode character.</li>
+              <li>Add the correct icon next to any link that contains the icon's URL. Make it automatic so you don't need to apply classes to each link.</li>
+              <li>Make the background of each list item start with your tertiary color and get progressively lighter if it's a dark color, and progressively darker if it's a light color. Make sure your text is till legible and gets darker or lighter on hover.</li>
+            </ul>
+            <aside class="notes">40 Minutes</aside>
+          </section>
+        </section>
 
 
 
