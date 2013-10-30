@@ -206,7 +206,7 @@
 						<h2>Challenge 02: Creating Some Sass</h2>
 						<ul>
 							<li>Create a folder for your Sass files, and put a file called <code class="language-javascript">style.scss</code> in it</li>
-							<li>Make the <code class="language-javascript">&lt;h2&gt;</code> in <code class="language-javascript">index.html</code> red in your <code class="language-javascript">style.scss</code> file</li>
+							<li>Make the <code class="language-markup">&lt;h1&gt;</code> in <code class="language-javascript">index.html</code> red in your <code class="language-javascript">style.scss</code> file</li>
 						</ul>
 					</section>
 					<section id="challenge-03-changing-compass-config" data-state="gold" data-transition="fade" data-transition-speed="slow">
@@ -226,15 +226,11 @@
 				</section>
 				<section data-transition="concave">
 					<section id="basics-css-extensions">
-						<p>Sass extends pre-compiled CSS in 7 basic ways</p>
+						<p>Sass makes maintaining pre-compiled CSS easier by extending pre-compiled CSS in 3 useful ways:</p>
 						<ul>
 							<li class="fragment">Variables</li>
 							<li class="fragment">Selector Nesting</li>
 							<li class="fragment">Selector Extension and Placeholder Selectors</li>
-							<li class="fragment">Functions</li>
-							<li class="fragment">Mixins</li>
-							<li class="fragment">Control Directives</li>
-							<li class="fragment">Loops</li>
 						</ul>
 					</section>
 				</section>
@@ -285,7 +281,7 @@ $greeting: 'Aloha';
 						<pre class="fragment"><code class="language-scss">body {
   background: #333;
   color: #eee;
-  font-family: 'Papyrus' 'Comic Sans' 'Helvetica' sans;
+  font-family: 'Papyrus' 'Comic Sans' 'Helvetica' sans-serif;
 }
 
 h1 {
@@ -296,7 +292,7 @@ h1 {
 						<pre><code class="language-scss">$background-color: #333;
 $font-color: #eee;
 
-$font-sans: 'Papyrus' 'Comic Sans' 'Helvetica' sans;
+$font-sans: 'Papyrus' 'Comic Sans' 'Helvetica' sans-serif;
 $font-serif: 'Times New Roman' serif;
 
 body {
@@ -519,6 +515,308 @@ nav a, nav .bad-extensions {
 }</code></pre>
 					</section>
 				</section>
+
+				<!-- Basics Challenge -->
+				<section>
+					<section id="challenge-04-fonts-and-colors" data-state="bronze" data-transition="fade" data-transition-speed="slow">
+						<h2>Challenge 04: Fonts & Colors</h2>
+						<ul>
+							<li>Create a <code class="language-scss">serif</code> and <code class="language-scss">sans-serif</code> font stack</li>
+							<li>Choose <code class="language-scss">primary</code>, <code class="language-scss">secondary</code>, and <code class="language-scss">tertiary</code> colors, and make your <code class="language-markup">&lt;h1&gt;</code> your primary color</li>
+						</ul>
+					</section>
+					<section id="challenge-05-creating-sass-file" data-state="silver" data-transition="fade" data-transition-speed="slow">
+						<h2>Challenge 05: Headers & Paragraphs</h2>
+						<ul>
+							<li>Add <code class="language-markup">&lt;h2&gt; through &lt;h6&gt;</code> tags to your <code class="language-javascript">index.html</code>, as well as a <code class="language-markup">&lt;p&gt;</code> tag, all with some text</li>
+							<li><code class="language-markup">&lt;h1&gt;, &lt;h2&gt;, &lt;h3&gt;</code> should have a <code class="language-scss">serif</code> font and <code class="language-markup">&lt;h4&gt;, &lt;h5&gt;, &lt;h6&gt;, &lt;p&gt;</code> should have a <code class="language-scss">sans-serif</code> font</li>
+							<li><code class="language-markup">&lt;h2&gt;, &lt;h3&gt;, &lt;h4&gt;</code> should be your secondary color</li>
+						</ul>
+					</section>
+					<section id="challenge-06-organization" data-state="gold" data-transition="fade" data-transition-speed="slow">
+						<h2>Challenge 06: Organization</h2>
+						<ul>
+							<li>Create <code class="language-javascript">colors</code>, <code class="language-javascript">typography</code>, and <code class="language-javascript">extendables</code> partials inside of <code class="language-javascript">sass/partials</code></li>
+							<li>Move your font variables and color variables into their respective partials</li>
+							<li>Move your placeholder selectors into your extendables partial</li>
+						</ul>
+					</section>
+				</section>
+
+				<!-- Constructs -->
+				<section data-transition="zoom">
+					<section id="sass-constructs">
+						<h1>Sass Constructs</h1>
+					</section>
+				</section>
+				<section data-transition="concave">
+					<section id="constructs-intro">
+						<p>Sass has two main constructs to assist in writing CSS</p>
+						<ul>
+							<li class="fragment">Functions</li>
+							<li class="fragment">Mixins</li>
+						</ul>
+					</section>
+				</section>
+
+				<!-- Functions -->
+				<section>
+					<section id="functions">
+						<h2>Functions</h2>
+					</section>
+					<section id="functions-basics">
+						<p>Functions provide a way for you to process information and <code class="language-scss">@return</code> a single variable</p>
+						<p class="fragment">Functions require a <code class="language-scss">@return</code>, and can return any data type that can be stored as a variable</p>
+						<p class="fragment">They can take both required or optional arguments.</p>
+					</section>
+					<section id="functions-basics-demo-sass">
+						<pre><code class="language-scss">@function greeting($phrase, $place: 'Islands of Adventure') {
+  $message: $phrase + ' from ' + $place;
+  @return $message;
+}
+
+.hello--spanish {
+  content: greeting('¡Hola');
+}
+.hello--french {
+  content: greeting('Bonjour', 'Universal Studios');
+}</code></pre>
+					</section>
+					<section id="functions-basics-demo-css">
+						<pre><code class="language-scss">.hello--spanish {
+  content: "¡Hola from Islands of Adventure";
+}
+
+.hello--french {
+  content: "Bonjour from Universal Studios";
+}</code></pre>
+					</section>
+					<section id="functions-usage">
+						<p>Functions cannot be called at the root of a document; their results need to be assigned to a variable, a property, or interpolated as a string</p>
+					</section>
+					<section id="functions-built-in">
+						<p>Sass has a number of <a href="http://sass-lang.com/documentation/Sass/Script/Functions.html">very useful built in functions</a> ready to be used:</p>
+						<ul>
+							<li class="fragment">Color Functions</li>
+							<li class="fragment">Number Functions</li>
+							<li class="fragment">String Functions</li>
+							<li class="fragment">Introspection and Miscellaneous Functions</li>
+							<li class="fragment">List Functions</li>
+							<li class="fragment">Map Functions</li>
+						</ul>
+					</section>
+					<section id="functions-colors">
+						<p><strong class="lowercase">Select Color Functions</strong></p>
+						<ul>
+							<li class="fragment"><code class="language-scss">mix($color-1, $color-2, [$weight])</code> - Mixes two colors together</li>
+							<li class="fragment"><code class="language-scss">complement($color)</code> - Returns the complement of a color</li>
+							<li class="fragment"><code class="language-scss">invert($color)</code> - Returns the inverse of a color</li>
+							<li class="fragment"><code class="language-scss">rgba($color, $alpha)</code> - Changes the alpha component for a color. Color can be passed in as any valid color format.</li>
+							<li class="fragment"><code class="language-scss">red($color), green($color), blue($color), hue($color), saturation($color), lightness($color)</code> - Returns relevant components of a color on the rgb/hsl scale</li>
+						</ul>
+					</section>
+					<section id="functions-numbers">
+						<p><strong class="lowercase">Number Functions</strong></p>
+						<ul>
+							<li class="fragment"><code class="language-scss">percentage($value)</code> - Converts a unitless number to a percentage</li>
+							<li class="fragment"><code class="language-scss">abs($value)</code> - Returns the absolute value of a number</li>
+							<li class="fragment"><code class="language-scss">round($value), floor($value), ceil($value)</code> - Rounds a number to the nearest whole number</li>
+							<li class="fragment"><code class="language-scss">min($numbers...), max($numbers...)</code> - Finds the min/max of several numbers</li>
+						</ul>
+					</section>
+					<section id="functions-strings">
+						<p><strong class="lowercase">String Functions</strong></p>
+						<ul>
+							<li class="fragment"><code class="language-scss">str-length($string)</code> - Returns the number of characters in a string</li>
+							<li class="fragment"><code class="language-scss">str-insert($original, $insert, $index)</code> - Inserts one string into another at a given point. An index of 0 will insert it at the beginning of the string</li>
+							<li class="fragment"><code class="language-scss">str-index($string, $substring)</code> - Returns the index of the first occurrence of the substring. Returns 0 if substring doesn't exist, 1 if it's the first character</li>
+							<li class="fragment"><code class="language-scss">str-slice($string, $start-at, [$end-at])</code> - Extracts a substring from the input string</li>
+							<li class="fragment"><code class="language-scss">to-upper-case($string), to-lower-case($string)</code> - Transforms string to upper/lower case</li>
+						</ul>
+					</section>
+					<section id="functions-introspection-miscellaneous">
+						<p><strong class="lowercase">Introspection & Miscellaneous Functions</strong></p>
+						<ul>
+							<li class="fragment"><code class="language-scss">type-of($value)</code> - Returns the primitive data type of the value</li>
+							<li class="fragment"><code class="language-scss">unit($number)</code> - Returns the unit(s) associated with a number</li>
+							<li class="fragment"><code class="language-scss">unitless($number)</code> - Returns whether a number has units</li>
+							<li class="fragment"><code class="language-scss">comparable($number-1, $number-2)</code> - Returns wether two numbers can be addes, subtracted, or compared</li>
+							<li class="fragment"><code class="language-scss">if($condition, $if-true, $if-false)</code> - Returns one of two values , depending on whether or not the condition is true</li>
+							<li class="fragment"></li>
+						</ul>
+					</section>
+					<section id="functions-lists">
+						<p><strong class="lowercase">List Functions</strong></p>
+						<ul>
+							<li class="fragment"><code class="language-scss">length($list)</code> - Returns the length of a list (or number of pairs in a map)</li>
+							<li class="fragment"><code class="language-scss">nth($list, $n)</code> - Returns the nth item in a list/map. Sass starts counting at 1, not 0.</li>
+							<li class="fragment"><code class="language-scss">join($list1, $list2, $separator)</code> - Joins two lists together. The separator can either be a comma or a space</li>
+							<li class="fragment"><code class="language-scss">append($list, $val, $separator)</code> - Appends a single value onto the end of a list</li>
+							<li class="fragment"><code class="language-scss">zip($lists...)</code> - Combines several lists into a single multidimensional list</li>
+							<li class="fragment"><code class="language-scss">index($list, $value)</code> - Returns the position of a value within a list. If the value isn't found, returns false</li>
+							<li class="fragment"><code class="language-scss">list-separator($list)</code> - Returns the separator of a list.</li>
+						</ul>
+					</section>
+					<section id="functions-maps">
+						<p><strong class="lowercase">Map Functions</strong></p>
+						<ul>
+							<li class="fragment"><code class="language-scss">map-get($map, $key)</code> - Returns the value in a map associated with the given key. If the map doesn't have such a key, returns null</li>
+							<li class="fragment"><code class="language-scss">map-merge($map1, $map2)</code> - Merges two maps together into a new map. Keys in Map 2 will take precedence over keys in Map 1. Keys will return in the order they appear in Map 1 with additional keys from Map 2 appended to the end</li>
+							<li class="fragment"><code class="language-scss">map-keys($map)</code> - Returns a list of all keys in the map</li>
+							<li class="fragment"><code class="language-scss">map-values($map)</code> - Returns a list of all values in a map. This list may include duplicates if multiple keys have the same value.</li>
+							<li class="fragment"><code class="language-scss">map-has-key($map, $key)</code> - Returns whether a map has a value associated with a given key</li>
+						</ul>
+					</section>
+				</section>
+
+				<!-- Mixins -->
+				<section>
+					<section id="mixins">
+						<h2>Mixins</h2>
+					</section>
+					<section id="mixins-basics">
+						<p>Mixins are similar to functions, except that instead of return a single value, they return Sass</p>
+						<p class="fragment">Mixins can be used at the root element or within selectors</p>
+						<p class="fragment">The best mixins only write properties that change based on user input and don't needlessly duplicate properties</p>
+					</section>
+					<section id="mixins-basics-demo-sass">
+						<pre><code class="language-scss">@mixin greeting($phrase, $place: 'Islands of Adventure', $color: #96360f) {
+  content: $phrase + ' from ' + $place;
+  background: $color;
+  color: invert($color);
+}
+
+.hello--spanish {
+  @include greeting('¡Hola');
+}
+
+.hello--french {
+  @include greeting('Bonjour', 'Universal Studios', #1875b4);
+}</code></pre>
+					</section>
+					<section id="mixins-basics-demo-css">
+						<pre><code class="language-scss">.hello--spanish {
+  content: "¡Hola from Islands of Adventure";
+  background: #96360f;
+  color: #69c9f0;
+}
+
+.hello--french {
+  content: "Bonjour from Universal Studios";
+  background: #1875b4;
+  color: #e78a4b;
+}</code></pre>
+					</section>
+					<section id="mixins-caution-demo-sass">
+						<pre><code class="language-scss">@mixin greeting($phrase, $place: 'Islands of Adventure') {
+  $color: #96360f;
+  content: $phrase + ' from ' + $place;
+  background: $color;
+  color: invert($color);
+}
+
+.hello--spanish {
+  @include greeting('¡Hola');
+}
+
+.hello--french {
+  @include greeting('Bonjour', 'Universal Studios');
+}</code></pre>
+					</section>
+					<section id="mixins-caution-demo-css">
+						<pre><code class="language-scss">.hello--spanish {
+  content: "¡Hola from Islands of Adventure";
+  background: #96360f;
+  color: #69c9f0;
+}
+
+.hello--french {
+  content: "Bonjour from Universal Studios";
+  background: #96360f;
+  color: #69c9f0;
+}</code></pre>
+					</section>
+					<section id="mixins-content-blocks">
+						<p>Mixins can also take blocks of properties from a user</p>
+						<p class="fragment">These blocks are called <code class="language-scss">@content</code> blocks</p>
+					</section>
+					<section id="mixins-content-blocks-demo-sass">
+						<pre><code class="language-scss">@mixin enhance-with($feature) {
+  .#{$feature} & {
+    @content;
+  }
+}
+
+@mixin degrade-from($feature, $no-js: true) {
+  .no-#{$feature} & {
+    @content;
+  }
+}
+
+.logo {
+  @include enhance-with('svg') {
+    background-image: url('../img/logo.svg');
+  }
+
+  @include degrade-from('svg') {
+    background-image: url('../img/logo.png');
+  }
+}</code></pre>
+					</section>
+					<section id="mixins-content-blocks-demo-css">
+						<pre><code class="language-scss">.svg .logo {
+  background-image: url("../img/logo.svg");
+}
+.no-svg .logo {
+  background-image: url("../img/logo.png");
+}</code></pre>
+					</section>
+				</section>
+
+				<!-- Constructs Challenge -->
+				<section>
+					<section id="challenge-07-fancy-buttons" data-state="bronze" data-transition="fade" data-transition-speed="slow">
+						<h2>Challenge 07: Fancy Buttons</h2>
+						<ul>
+							<li>Add a primary and a secondary <code class="language-markup">&lt;button&gt;</code> to your HTML</li>
+							<li>Create and use a <code class="language-scss">@mixin</code> to style them. They should have a <code class="language-scss">flat background color</code>, <code class="language-scss">3px rounded corners</code>, and a <code class="language-scss">2px outset border</code> that changes to an <code class="language-scss">inset border</code> when active that's a <code class="language-scss">25% shade</code> of the passed in color. The button should have a <code class="language-scss">pointer cursor</code> on hover. Their primary colors should be your primary and secondary color, respectively.</li>
+							<li><strong class="lowercase">Remember!</strong> <code class="language-scss">@mixin</code> properties that are shared should not be duplicated!</li>
+						</ul>
+					</section>
+					<section id="challenge-08-color-contrasting" data-state="silver" data-transition="fade" data-transition-speed="slow">
+						<h2>Challenge 08: Color Contrasting</h2>
+						<ul>
+							<li>Update your <code class="language-scss">@mixin</code> so that if the color passed in is dark, the <code class="language-scss">text color is #eee</code>, and if it is light, the <code class="language-scss">text color is #333</code></li>
+							<li><strong class="lowercase">Hint!</strong>Take a look at YIQ to determine if a color is light or dark! You may use any Compass extensions you may find, if you can figure out how to.</li>
+						</ul>
+					</section>
+					<section id="challenge-09-organization" data-state="gold" data-transition="fade" data-transition-speed="slow">
+						<h2>Challenge 094: Organization</h2>
+						<ul>
+							<li>Create <code class="language-javascript">colors</code>, <code class="language-javascript">typography</code>, and <code class="language-javascript">extendables</code> partials inside of <code class="language-javascript">sass/partials</code></li>
+							<li>Move your font variables and color variables into their respective partials</li>
+							<li>Move your placeholder selectors into your extendables partial</li>
+						</ul>
+					</section>
+				</section>
+
+				<!-- Control Directives -->
+				<section data-transition="zoom">
+					<section id="control-directives">
+						<h1>Sass Control Directives</h1>
+					</section>
+				</section>
+				<section data-transition="concave">
+					<section id="control-intro">
+						<p>Sass introduces a variety of constructs to assist in writing CSS</p>
+						<ul>
+							<li class="fragment">Functions</li>
+							<li class="fragment">Mixins</li>
+						</ul>
+					</section>
+				</section>
+
+
 
 
 
