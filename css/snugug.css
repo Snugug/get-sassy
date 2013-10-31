@@ -78,3 +78,8 @@ ul .fragment.visible{opacity:1;-webkit-transform:rotateX(0);-moz-transform:rotat
     color: #333;
   }
 }
+
+code.small {
+  font-size: .75em;
+  line-height: 1em;
+}
