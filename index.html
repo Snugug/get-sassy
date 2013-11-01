@@ -181,7 +181,7 @@
 					</section>
 
 					<section id="dependencies-gemfile">
-						<p>The <code class="language-javascript">Gemfile</code> that comes with the project will tell Bundler exactly what versions of what gems to use. Use the following command to create a <code class="language-javascript">Gemfile.lock</code> file within your theme to install gem dependencies you may not already have and to lock each gem version.</p>
+						<p>The <code class="language-javascript">Gemfile</code> that comes with the project will tell Bundler exactly what versions of what gems to use. Use the following command  to install your gem dependencies and create a <code class="language-javascript">Gemfile.lock</code> to lock each gem to the correct version.</p>
 						<pre class="fragment"><code class="language-javascript">bundle install</code></pre>
 					</section>
 
@@ -1129,6 +1129,126 @@ $browser-minimum-versions: (
 }</code></pre>
           </section>
         </section>
+
+        <!-- Image Helpers -->
+        <section>
+          <section id="image-helpers">
+            <h2>Image Helpers</h2>
+          </section>
+          <section id="images-basics">
+            <p>Compass also comes with a variety of image helper functions and functionality to assist in writing some fairly complex image related CSS a breeze</p>
+            <p class="fragment">Because Compass knows where your images live (thanks to <code class="language-javascript">config.rb</code>), it can provide simple helper functions like <code class="language-scss">image-url() image-height(), image-width(), inline-image()</code> all while pointing to relative image URLs</p>
+          </section>
+          <section id="images-basics-demo-sass">
+            <pre><code class="language-scss">.background--universal {
+  background-image: image-url('backgrounds/universal.jpg');
+}
+
+.icon--find {
+  background-image: inline-image('icons/find.png');
+  height: image-height('icons/find.png');
+  width: image-width('icons/find.png');
+}</code></pre>
+          </section>
+          <section id="images-basics-demo-css">
+            <pre><code class="language-scss">.background--universal {
+  background-image: url('../images/backgrounds/universal.jpg');
+}
+
+.icon--find {
+  background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUg…RK5CYII=');
+  image-height: 25px;
+  image-width: 25px;
+}</code></pre>
+          </section>
+          <section id="images-sprites">
+            <p>Compass will also let you make image sprites automagically! Simply put a folder of <code class="language-markup">.png</code> files</p>
+            <p class="fragment">Simply import your folder in your Compass project, and it'll automatically create a magic sprite for you! Change an individual file, and the whole sprite gets updated!</p>
+          </section>
+          <section id="images-sprites-demo-sass">
+            <pre><code class="language-scss">@import "icons/*.png";
+
+.icon--find {
+  @include icons-sprite('find');
+}
+
+.icon--minion {
+  @include icons-sprite('minion');
+}</code></pre>
+          </section>
+          <section id="image-sprites-demo-css">
+            <pre><code class="language-scss">.icons-sprite, .icon--find, .icon--minion {
+  background-image: url('../img/icons-sf15a179063.png');
+  background-repeat: no-repeat;
+}
+
+.icon--find {
+  background-position: 0 0;
+}
+
+.icon--minion {
+  background-position: 0 -25px;
+}</code></pre>
+          </section>
+        </section>
+
+        <!-- Compass Challenge -->
+        <section>
+          <section id="challenge-13-cows" data-state="bronze" data-transition="fade" data-transition-speed="slow">
+            <h2>Challenge 13: Cows</h2>
+            <ul>
+              <li>Download three cow pictures, put them in your images directory in a <code class="language-markup">cows</code> folder, make sure they're <code class="language-markup">.png</code> files, and create a sprite out of them</li>
+              <li>Make the sprites dynamic! The classes that they apply to should be drawn directly from the names of the files!</li>
+              <li>Make <code class="language-markup">&lt;div&gt;</code> sized to their respective background images on your page. Make them float next to each other.</li>
+              <li><strong class="lowercase">Hint!</strong> Look up <code class="language-scss">sprite-names()</code></li>
+            </ul>
+            <aside class="notes">15 Minutes</aside>
+          </section>
+          <section id="challenge-14-flexbox" data-state="silver" data-transition="fade" data-transition-speed="slow">
+            <h2>Challenge 14: Flexbox</h2>
+            <ul>
+              <li>Choose two breakpoints to change the visual source order of your cow pictures when they're in line with each other</li>
+              <li>Using <code class="language-scss">flexbox</code>, rearrange their visual order so that the first ordering the cows are shifted one to the right, and the second ordering the cows are shifted on to the left</li>
+            </ul>
+            <aside class="notes">20 Minutes</aside>
+          </section>
+          <section id="challenge-15-frameworks" data-state="gold" data-transition="fade" data-transition-speed="slow">
+            <h2>Challenge 15: Frameworks</h2>
+            <ul>
+              <li>Turn your partials directory into a personal Compass framework</li>
+              <li>Put your framework in a folder named <code class="language-markup">framework</code> at the root of your directory (so it's next to <code class="language-markup">sass</code>, not inside it).</li>
+              <li><strong class="lowercase">Hint!</strong> See if you can override your color choice so you only need one color partial</li>
+            </ul>
+            <aside class="notes">40 Minutes</aside>
+          </section>
+        </section>
+
+        <!-- Sourcemaps -->
+        <section data-transition="zoom">
+          <section id="sourcemaps">
+            <h1>Sourcemaps</h1>
+          </section>
+        </section>
+        <section data-transition="concave">
+          <section id="sourcemaps-intro">
+            <h2>Bonus!</h2>
+            <p>Sourcemaps are the new Sass 3.3 way of debugging your compiled Sass files. They map the properties and values output in your CSS to where they come from, allowing for fine-grain debugging</p>
+            <p class="fragment">At the time of this writing, the only stable support for Sass Sourcemaps is actually baked right in to Google Chrome Canary</p>
+          </section>
+        </section>
+
+        <section>
+          <section id="sourcemaps-basics">
+            <p>Download Google Chrome Canary, open up the settings of Developer Tools, and enable CSS Source Maps, stop watching your files, and run this instead:</p>
+            <pre class="fragment"><code class="language-javascript">bundle exec sass --watch --compass --sourcemap sass:css</code></pre>
+          </section>
+          <section id="sourcemaps-basics-inspect">
+            <p>Open up your website, inspect an element, and CMD/CTRL click on a property or value to see where it comes from!</p>
+            <p class="fragment">Happy Debugging!</p>
+          </section>
+        </section>
+
+
 
 
 
