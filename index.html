@@ -685,21 +685,20 @@ nav a, nav .bad-extensions {
 							<li class="fragment"><code class="language-scss">type-of($value)</code> - Returns the primitive data type of the value</li>
 							<li class="fragment"><code class="language-scss">unit($number)</code> - Returns the unit(s) associated with a number</li>
 							<li class="fragment"><code class="language-scss">unitless($number)</code> - Returns whether a number has units</li>
-							<li class="fragment"><code class="language-scss">comparable($number-1, $number-2)</code> - Returns wether two numbers can be addes, subtracted, or compared</li>
-							<li class="fragment"><code class="language-scss">if($condition, $if-true, $if-false)</code> - Returns one of two values , depending on whether or not the condition is true</li>
-							<li class="fragment"></li>
+							<li class="fragment"><code class="language-scss">comparable($number-1, $number-2)</code> - Returns whether two numbers can be added, subtracted, or compared</li>
+							<li class="fragment"><code class="language-scss">if($condition, $if-true, $if-false)</code> - Returns one of two values, depending on whether or not the condition is true</li>
 						</ul>
 					</section>
 					<section id="functions-lists">
 						<p><strong class="lowercase">List Functions</strong></p>
 						<ul>
 							<li class="fragment"><code class="language-scss">length($list)</code> - Returns the length of a list (or number of pairs in a map)</li>
-							<li class="fragment"><code class="language-scss">nth($list, $n)</code> - Returns the nth item in a list/map. Sass starts counting at 1, not 0.</li>
+							<li class="fragment"><code class="language-scss">nth($list, $n)</code> - Returns the nth item in a list/map. Sass starts counting at 1, not 0</li>
 							<li class="fragment"><code class="language-scss">join($list1, $list2, $separator)</code> - Joins two lists together. The separator can either be a comma or a space</li>
 							<li class="fragment"><code class="language-scss">append($list, $val, $separator)</code> - Appends a single value onto the end of a list</li>
 							<li class="fragment"><code class="language-scss">zip($lists...)</code> - Combines several lists into a single multidimensional list</li>
 							<li class="fragment"><code class="language-scss">index($list, $value)</code> - Returns the position of a value within a list. If the value isn't found, returns false</li>
-							<li class="fragment"><code class="language-scss">list-separator($list)</code> - Returns the separator of a list.</li>
+							<li class="fragment"><code class="language-scss">list-separator($list)</code> - Returns the separator of a list</li>
 						</ul>
 					</section>
 					<section id="functions-maps">
@@ -708,7 +707,7 @@ nav a, nav .bad-extensions {
 							<li class="fragment"><code class="language-scss">map-get($map, $key)</code> - Returns the value in a map associated with the given key. If the map doesn't have such a key, returns null</li>
 							<li class="fragment"><code class="language-scss">map-merge($map1, $map2)</code> - Merges two maps together into a new map. Keys in Map 2 will take precedence over keys in Map 1. Keys will return in the order they appear in Map 1 with additional keys from Map 2 appended to the end</li>
 							<li class="fragment"><code class="language-scss">map-keys($map)</code> - Returns a list of all keys in the map</li>
-							<li class="fragment"><code class="language-scss">map-values($map)</code> - Returns a list of all values in a map. This list may include duplicates if multiple keys have the same value.</li>
+							<li class="fragment"><code class="language-scss">map-values($map)</code> - Returns a list of all values in a map. This list may include duplicates if multiple keys have the same value</li>
 							<li class="fragment"><code class="language-scss">map-has-key($map, $key)</code> - Returns whether a map has a value associated with a given key</li>
 						</ul>
 					</section>
@@ -720,7 +719,7 @@ nav a, nav .bad-extensions {
 						<h2>Mixins</h2>
 					</section>
 					<section id="mixins-basics">
-						<p>Mixins are similar to functions, except that instead of return a single value, they return Sass</p>
+						<p>Mixins are similar to functions, except that instead of returning a single value, they return Sass</p>
 						<p class="fragment">Mixins can be used at the root element or within selectors</p>
 						<p class="fragment">The best mixins only write properties that change based on user input and don't needlessly duplicate properties</p>
 					</section>
